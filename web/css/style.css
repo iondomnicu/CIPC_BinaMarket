@@ -20,7 +20,7 @@ body {
   font-family: 'Roboto Condensed', sans-serif; }
 
 header.header, nav.header {
-  height: 72px;
+  height: 85px;
   line-height: 72px;
   background-color: #364d5f;
   box-shadow: #ccc 0 2px 1px;
@@ -141,7 +141,7 @@ aside li a.active {
 
 .search-form {
   width: 100%;
-  display: block;
+  
   position: relative;
   margin: 0; }
   .search-form input {

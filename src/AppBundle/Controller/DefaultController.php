@@ -34,14 +34,16 @@ class DefaultController extends Controller
                 ->getRepository('AppBundle:Companies');*/
         $menu['result'] = $menuRepository->showAction();
         $connect = $this->get('database_connection');
+         $search1['result'] = $connect->fetchAll("select DISTINCT Nm From companies");
         $popular['result'] = $connect->fetchAll('select * from companies order by `views` DESC limit 5');
         $popular['items'] = $connect->fetchAll('select * from items order by `views` DESC limit 5');
-        if($subjectId == 'Items'){
+        if($subjectId == 'items'){
          /* $itemsRepository = $this->getDoctrine()
                     ->getManager()
                     ->getRepository('AppBundle:Articles');
             $items['result'] = $itemsRepository->showItems();*/
             $connect = $this->get('database_connection');
+             $search1['result'] = $connect->fetchAll("select DISTINCT Nm From companies");
             $items['result'] = $connect->fetchAll('select * from items limit 12');
             $rezult = $connect->fetchAll("select * From items ");
             $count = 0;
@@ -50,6 +52,7 @@ class DefaultController extends Controller
             }
              $rez= $count/12;
          $data= [
+             'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>null,
               'a' =>1,
@@ -60,8 +63,9 @@ class DefaultController extends Controller
               'menu'=>$menu['result'],
               'items'=>$items['result'],
          ];
-        }else if($subjectId =='Articles'){
+        }else if($subjectId =='articles'){
             $connect = $this->get('database_connection');
+             $search1['result'] = $connect->fetchAll("select DISTINCT Nm From companies");
             $articles['result'] = $connect->fetchAll('select * from articles limit 12');
             $rezult = $connect->fetchAll("select * From articles ");
                  $count = 0;
@@ -70,6 +74,7 @@ class DefaultController extends Controller
             }
             $rez= $count/12;
          $data= [
+             'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>null,
               'a' =>1,
@@ -85,6 +90,7 @@ class DefaultController extends Controller
         
         
         $connect = $this->get('database_connection');
+         $search1['result'] = $connect->fetchAll("select DISTINCT Nm From companies");
         $companys['result'] = $connect->fetchAll("select * From companies limit 12");
         $rezult = $connect->fetchAll("select * From companies ");
         $count = 0;
@@ -93,6 +99,7 @@ class DefaultController extends Controller
         }
         $rez= $count/12;
           $data= [
+              'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>null,
               'a' =>1,

@@ -21,6 +21,7 @@ class SearchController extends Controller
             $title = $request->get('search');
             //echo "<div class=\"searchText\">Search Results</div><hr/>";
             $connect = $this->get('database_connection');
+            
             $Search_terms = explode(' ', $title); //splits search terms at spaces
             $query = "SELECT * FROM companies WHERE ";
             $query1 = "SELECT * FROM items WHERE ";
