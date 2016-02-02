@@ -108,7 +108,7 @@ div.img img{
         margin: 5px auto;
     }
 }
-/*@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px){
     div.infoimg{
         width: 95%;
         margin: 5px auto;
@@ -118,7 +118,7 @@ div.img img{
         margin: 5px auto;
         height: auto;
     }
-}*/
+
 
 input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
 input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
