@@ -52,6 +52,7 @@ class DefaultController extends Controller
             }
              $rez= $count/12;
          $data= [
+             'this'=>1,
              'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>null,
@@ -74,6 +75,7 @@ class DefaultController extends Controller
             }
             $rez= $count/12;
          $data= [
+             'this'=>1,
              'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>null,
@@ -99,6 +101,7 @@ class DefaultController extends Controller
         }
         $rez= $count/12;
           $data= [
+              'this'=>1,
               'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>null,

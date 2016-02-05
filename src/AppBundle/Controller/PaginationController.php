@@ -42,6 +42,7 @@ class PaginationController extends Controller{
             }else{
             $company['rezult']= $connect->fetchAll('select * from '.$name.' Order By `Nm` '.$ts.'  LIMIT 12 OFFSET '.$m);}
                 $data = [
+                    'this'=>$i,
                    'name'=>$name,
                    'menu'=>$menu['result'],
                    'tip'=>$tip,
@@ -59,6 +60,7 @@ class PaginationController extends Controller{
                   }else{
                    $company['rezult']= $connect->fetchAll('select * from '.$name.' Order By `Nm` '.$ts.'  LIMIT 12 OFFSET '.$m);}
                 $data = [
+                    'this'=>$i,
                    'name'=>$name,
                    'menu'=>$menu['result'],
                    'tip'=>$tip,
@@ -75,6 +77,7 @@ class PaginationController extends Controller{
                   }else{
                    $company['rezult']= $connect->fetchAll('select * from '.$name.' Order By `title` '.$ts.'  LIMIT 12 OFFSET '.$m);}
                $data = [
+                   'this'=>$i,
                    'name'=>$name,
                    'menu'=>$menu['result'],
                    'tip'=>$tip,
@@ -94,6 +97,7 @@ class PaginationController extends Controller{
             $company['rezult']= $connect->fetchAll('select * from '.$name.' Order By `SalePrice` '.$ts.'  LIMIT 12 OFFSET '.$m);}
              if($name == 'items'){
                 $data = [
+                    'this'=>$i,
                    'name'=>$name,
                    'menu'=>$menu['result'],
                    'tip'=>$tip,
