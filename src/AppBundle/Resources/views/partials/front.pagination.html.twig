@@ -1,14 +1,19 @@
 {% if data.count > 1 %}
        <div class="col-md-12">
-           <div style="margin-left:200px;">
-<ul class="list-unstyled list-inline pagination">   
+           <div style="margin: 0 auto;width: 610px; margin-right: 70px;">
+<ul class="list-unstyled list-inline pagination"> 
+    
+    {% if data.this > 1%}
+           <li style="display:inline-block;"><a class="pag" href="{{path('page',{'i':1,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;"><<<</a></li>
+     {% endif %}
      {% if data.this > 1%}
            <li style="display:inline-block;"><a class="pag" href="{{path('page',{'i':data.b,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;"><<</a></li>
-       {% endif %}
-    {% if data.count > 9 %} 
+    {% endif %}
+     
+    {% if data.count > 7 %} 
     {%if data.count>data.this+5%}
     {%if data.this-4<1%}
-        {% for i in 1..9 %}
+        {% for i in 1..7 %}
           {%if data.this==i%}
     <li style="display:inline-block;"><a style="list-style: none; background-color: gray;">{{ i }}</a></li>
     {%else%}
@@ -16,7 +21,7 @@
     {%endif%}
     {% endfor %}
     {%else%}
-    {% for i in data.this-3..data.this+5 %}
+    {% for i in data.this-3..data.this+3 %}
     {%if data.this==i%}
     <li style="display:inline-block;"><a style="list-style: none; background-color: gray;">{{ i }}</a></li>
     {%else%}
@@ -25,7 +30,7 @@
       {% endfor %}
     {%endif%}
     {%else%}
-    {% for i in data.count-8..data.count %}
+    {% for i in data.count-7..data.count %}
     {%if data.this==i%}
     <li style="display:inline-block;"><a style="list-style: none; background-color: gray;">{{ i }}</a></li>
     {%else%}
@@ -42,10 +47,14 @@
     {%endif%}
     {% endfor %}
     {% endif %}
-         {%if data.this!=data.count%}
+     
+     {%if data.this!=data.count%}
     <li style="display:inline-block;"><a href="{{path('page',{'i':data.a,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;">  >> </a></li>
       {%endif%}
-</ul>  
+     {%if data.this<data.count%}
+    <li style="display:inline-block;"><a href="{{path('page',{'i':data.count,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;">  >>>> </a></li>
+      {%endif%}
+        </ul>  
 
        </div>
    </div>   
