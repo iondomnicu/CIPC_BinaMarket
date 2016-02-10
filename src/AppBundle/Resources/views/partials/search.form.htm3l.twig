@@ -1,0 +1,21 @@
+<form class="search-form" action="{{path('search')}}" method="POST"><input
+    type="search "    name="search" class="tags" placeholder="Search" id="search" /><span
+        class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    <div class="preloader hidden"></div>
+    <div class="search-result-list hidden">
+        <div class="result-list-container nano">
+            <div class="nano-content"  id="search-result"></div>
+        </div>
+        <!--
+        <footer>
+            <ul class="list-unstyled list-inline">
+                <li><div class="checkbox">
+                        <label><input type="checkbox" name="filter-company" checked="checked" data-type="company" />Companies</label>
+                    </div></li>
+                <li><div class="checkbox">
+                        <label><input type="checkbox" id="filter-article" checked="checked" data-type="article" />Articles</label>
+                    </div></li>
+            </ul>
+        </footer>-->
+    </div>
+</form>

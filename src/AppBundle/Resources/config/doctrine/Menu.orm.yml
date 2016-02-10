@@ -1,0 +1,23 @@
+AppBundle\Entity\Menu:
+    type: entity
+    table: menu
+    repositoryClass: AppBundle\Entity\MenuRepository
+    id:
+        idMenu:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_menu
+            generator:
+                strategy: IDENTITY
+    fields:
+        denMenu:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: den_menu
+    lifecycleCallbacks: {  }

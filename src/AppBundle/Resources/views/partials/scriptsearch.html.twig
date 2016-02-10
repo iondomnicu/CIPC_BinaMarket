@@ -1,0 +1,16 @@
+   <script>
+  $(function() {
+      
+    var availableTags = [
+  {% if data.search1 is defined %}
+        {% for search in data.search1 %}
+      "{{search.Nm|replace({'%&#039;%':"/"})}}",
+      {% endfor %}{%endif%}
+      " "
+    ];
+    $( ".tags" ).autocomplete({
+      source: availableTags
+    });
+  });
+  
+  </script>

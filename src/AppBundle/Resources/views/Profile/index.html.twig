@@ -1,0 +1,68 @@
+{% extends 'B2BBlogBundle:template:base.html.twig' %}
+{% block title %}
+    {{ parent() }}
+    {% include 'B2BBlogBundle:partials:title.html.twig' %}
+{% endblock %}
+{% block content %}
+<div class="singe-page company-profile square-block col-xs-12">
+    <div class="inner">
+        <div class="pull-left left-col">
+            <div class="image-placeholder">
+                <img src="
+                {% if data.profile.image is not null %}
+                {{ data.profile.image }}
+                {% else %}
+                {{ asset('/images/logo-placeholder.jpg') }}
+                {% endif %}"
+                 alt="{{ data.profile.nm }}" class="profile-logo" />
+            </div>
+            <div class="profile-buttons">
+              
+                <a href="{{ path('client_articles', {'companyId':data.profile.id }) }}" class="btn btn-default green text-uppercase">View articles</a>
+            </div>
+        </div>
+        <div class="content">
+            <ul class="list-unstyled">
+                <li class="company-name"><h1>{{ data.profile.nm }}</h1></li>
+                {% if data.profile.phone_number is defined %}
+                    <li>
+                        <ul class="list-unstyled">
+                            <li>phones:</li>
+                            {% for phone in data.profile.phone_number %}
+                                <li>{{ phone }}</li>
+                            {% endfor %}
+                        </ul>
+                        <br>
+                    </li>
+                {% endif %}
+                {% if data.profile.email is defined %}
+                    <li>
+                        <ul class="list-unstyled">
+                            <li>emails:</li>
+                            {% for email in data.profile.email %}
+                                <li>{{ email }}</li>
+                            {% endfor %}
+                        </ul>
+                        <br>
+                    </li>
+                {% endif %}
+                {% if data.profile.fax_number is defined %}
+                    <li>
+                        <ul class="list-unstyled">
+                            <li>fax:</li>
+                            <li>{{ data.profile.fax_number }}</li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li>
+                    <p>about company:</p>
+                    <div>
+                        {{ data.profile.description }}
+                    </div>
+                    <br>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

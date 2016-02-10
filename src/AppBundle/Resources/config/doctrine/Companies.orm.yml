@@ -1,0 +1,368 @@
+AppBundle\Entity\Companies:
+    type: entity
+    table: companies
+    repositoryClass: AppBundle\Entity\CompaniesRepository
+    indexes:
+        Companies_d860be3c:
+            columns:
+                - CountryC
+        Companies_b376980e:
+            columns:
+                - CityC
+        Companies_a3c9d75e:
+            columns:
+                - CompanyType
+        Companies_494063b5:
+            columns:
+                - DefaultCustomer
+        Companies_5da967c3:
+            columns:
+                - DefaultCashier
+        Companies_4d5ba1a7:
+            columns:
+                - DefaultIncomeVAT
+        Companies_406ec824:
+            columns:
+                - StampDevice
+        Companies_4c1c18be:
+            columns:
+                - DefaultItem
+        Companies_75a9a664:
+            columns:
+                - DefaultImporter
+        Companies_85ab9a21:
+            columns:
+                - DefaultManufacturer
+    id:
+        c:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: C
+            generator:
+                strategy: IDENTITY
+    fields:
+        email:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: Email
+        password:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: Password
+        nm:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: Nm
+        dateclose:
+            type: datetime
+            nullable: true
+            column: DateClose
+        address:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: Address
+        phoneareacode:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: PhoneAreaCode
+        phonenumber:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+            column: PhoneNumber
+        mobileareacode:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: MobileAreaCode
+        mobilenumber:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+            column: MobileNumber
+        faxareacode:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: FaxAreaCode
+        faxnumber:
+            type: string
+            nullable: false
+            length: 12
+            options:
+                fixed: false
+            column: FaxNumber
+        companyid:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: CompanyID
+        defaultincome:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: DefaultIncome
+        logoimage:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: LogoImage
+        dateCreated:
+            type: datetime
+            nullable: false
+            column: date_created
+        showCompanyOnline:
+            type: boolean
+            nullable: false
+            column: show_company_online
+        description:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        stamddate:
+            type: datetime
+            nullable: true
+            column: StamdDate
+        swdelete:
+            type: boolean
+            nullable: false
+            column: SwDelete
+        sftpPassword:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sftp_password
+        sftpUrl:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sftp_url
+        sftpUsername:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sftp_username
+        amoCrmDomain:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: amo_crm_domain
+        amoCrmKey:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: amo_crm_key
+        amoCrmLogin:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: amo_crm_login
+        bankaccount:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: BankAccount
+        companyregister:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: CompanyRegister
+        registercode:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: RegisterCode
+        sharecapital:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: ShareCapital
+        defaultunit:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: DefaultUnit
+        includeVat:
+            type: boolean
+            nullable: false
+            column: include_vat
+        barcodeType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: barcode_type
+        paymentType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: payment_type
+        website:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+            column: WebSite
+        views:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+    manyToOne:
+        cityc:
+            targetEntity: Cities
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CityC:
+                    referencedColumnName: C
+            orphanRemoval: false
+        defaultimporter:
+            targetEntity: CatalogImporter
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DefaultImporter:
+                    referencedColumnName: id
+            orphanRemoval: false
+        defaultitem:
+            targetEntity: Items
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DefaultItem:
+                    referencedColumnName: C
+            orphanRemoval: false
+        companytype:
+            targetEntity: Countriescompanytypes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CompanyType:
+                    referencedColumnName: id
+            orphanRemoval: false
+        countryc:
+            targetEntity: Countries
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CountryC:
+                    referencedColumnName: C
+            orphanRemoval: false
+        defaultcashier:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DefaultCashier:
+                    referencedColumnName: C
+            orphanRemoval: false
+        defaultcustomer:
+            targetEntity: Accounts
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DefaultCustomer:
+                    referencedColumnName: C
+            orphanRemoval: false
+        defaultincomevat:
+            targetEntity: Vatgroups
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DefaultIncomeVAT:
+                    referencedColumnName: C
+            orphanRemoval: false
+        defaultmanufacturer:
+            targetEntity: CatalogManufacturer
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DefaultManufacturer:
+                    referencedColumnName: id
+            orphanRemoval: false
+        stampdevice:
+            targetEntity: Devices
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                StampDevice:
+                    referencedColumnName: C
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

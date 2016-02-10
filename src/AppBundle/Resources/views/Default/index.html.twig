@@ -1,0 +1,45 @@
+{% extends 'B2BBlogBundle:template:base.html.twig' %}
+{% block title %}
+    {{ parent() }}
+    {% include 'B2BBlogBundle:partials:title.html.twig' %}
+{% endblock %}
+{% block bodyattributes %}class="index-page post-list"{% endblock %}
+{% block pagination %}
+    {% include 'B2BBlogBundle:partials:front.pagination.html.twig' with {'last_page': data.pagination} %}
+{% endblock %}
+{% block content %}
+    {% if data.articles is defined %}
+    {% for article in data.articles %}
+        <div class="col-md-4 col-sm-6 square-block post-block">
+            <div class="inner">
+                <ul class="list-unstyled">
+                    <li class="post-image">
+                        <img src="{{ article.image ? article.image : 'http://placehold.it/250x250&text=post+image' }}" alt="post" />
+                    </li>
+                    <li class="post-meta">
+                        <p>
+                            <span class="company-name">{{ strings.limitTo(article.company__nm, 25) }}</span>{% if article.subject is not null %}&nbsp;|&nbsp;<span class="category">{{ strings.limitTo(article.subject__description, 25) }}</span>{% endif %}
+                        </p>
+                        <p><span class="date">{{ article.created|date("d/m/Y G:i") }}</span></p>
+                    </li>
+                    <li>
+                        <h3 class="post-title"><a href="{{ path('show_client_article', { 'articleId': article.id }) }}">
+                            {{ strings.limitTo(article.title, 36) }}</a>
+                        </h3>
+                    </li>
+                    <li>
+                        <p class="post-description">
+                            {{ strings.limitTo(article.description, 125) }}
+                        </p>
+                    </li>
+                </ul>
+                <footer>
+                    <a href="{{ path("show_client_article", {"articleId": article.id }) }}">more&hellip;</a>
+                    <p class="pull-right">Views: {{ article.id in data.count|keys ? data.count[article.id] : 0 }}</p>
+                </footer>
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+{% endblock %}

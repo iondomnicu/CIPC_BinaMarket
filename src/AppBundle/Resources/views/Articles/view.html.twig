@@ -1,0 +1,32 @@
+{% extends 'B2BBlogBundle:template:base.html.twig' %}
+{% block title %}
+    {{ parent() }} 
+    {% include 'B2BBlogBundle:partials:title.html.twig' %}
+{% endblock %}
+{% block sidebar_posts %}
+    {% include 'B2BBlogBundle:partials:sidebar.posts.html.twig' with {'posts': data.recent, 'header': 'Recent Posts' } %}
+{% endblock %}
+{% block bodyattributes %}class="article-page"{% endblock %}
+{% block content %}
+    <article class="company-article square-block col-xs-12">
+        <div class="inner">
+        <header><h1 class="middle-header blue-text">{{ data.article.title }}</h1></header>
+        <div class="content">
+            {% if data.article.image is not null %}
+            <img src="{{ data.article.image }}" class="post-image pull-right" alt="{{ data.article.title }}" />
+            {% endif %}
+            {% autoescape false %}
+            {{ data.article.body|replace({"\n":' ', "\r":' '})|trim }}
+            {% endautoescape %}
+        </div>
+        <footer>
+            <p>
+                <a href="{{ path('client_profile', { 'companyId': data.article.company }) }}">{{ data.article.company__nm }}</a>
+                {% if data.article.subject is not null %}
+                | <a href="{{ path('home', { subjectId: data.article.subject }) }}">{{ data.article.subject__description }}</a>
+                {% endif %}
+            </p>
+        </footer>
+        </div>
+    </article>
+{% endblock %}

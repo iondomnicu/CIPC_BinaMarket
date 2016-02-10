@@ -1,0 +1,277 @@
+AppBundle\Entity\Items:
+    type: entity
+    table: items
+    repositoryClass: AppBundle\Entity\ItemsRepository
+    indexes:
+        Items_0316dde1:
+            columns:
+                - CompanyC
+        Items_ed4bcf2f:
+            columns:
+                - VatGroup
+        Items_5f412f9a:
+            columns:
+                - GroupC
+        Items_b9dcc52b:
+            columns:
+                - unit_id
+        Items_406ec824:
+            columns:
+                - StampDevice
+        Items_bc9dcfc6:
+            columns:
+                - importer_id
+        Items_399a0583:
+            columns:
+                - color_id
+        Items_16fe489b:
+            columns:
+                - item_model_id
+        Items_8222f9c0:
+            columns:
+                - size_id
+        Items_f16bb99f:
+            columns:
+                - item_material_id
+        Items_cc56b9d2:
+            columns:
+                - item_standard_id
+        Items_aadc4860:
+            columns:
+                - currency_buy_price_id
+        Items_47e70af5:
+            columns:
+                - currency_sale_price_id
+    id:
+        c:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: C
+            generator:
+                strategy: IDENTITY
+    fields:
+        code:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: Code
+        nm:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Nm
+        barcode:
+            type: string
+            nullable: false
+            length: 13
+            options:
+                fixed: false
+            column: Barcode
+        buyprice:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            column: BuyPrice
+        saleprice:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            column: SalePrice
+        stamddate:
+            type: datetime
+            nullable: false
+            column: StamdDate
+        swdelete:
+            type: boolean
+            nullable: false
+            column: SwDelete
+        swnotactive:
+            type: boolean
+            nullable: false
+            column: SwNotActive
+        discount:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: Discount
+        description:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        picture:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Picture
+        quantity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        existsInvoices:
+            type: boolean
+            nullable: false
+            column: exists_invoices
+        codeForeign:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: code_foreign
+        manufacturerId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: manufacturer_id
+        barcodeNumerator:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: barcode_numerator
+    manyToOne:
+        companyc:
+            targetEntity: Companies
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CompanyC:
+                    referencedColumnName: C
+            orphanRemoval: false
+        groupc:
+            targetEntity: ItemsGroups
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GroupC:
+                    referencedColumnName: C
+            orphanRemoval: false
+        itemMaterial:
+            targetEntity: CatalogItemmaterial
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                item_material_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        itemStandard:
+            targetEntity: CatalogItemstandard
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                item_standard_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        color:
+            targetEntity: CatalogColor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                color_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        currencyBuyPrice:
+            targetEntity: Currencies
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                currency_buy_price_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        currencySalePrice:
+            targetEntity: Currencies
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                currency_sale_price_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        importer:
+            targetEntity: CatalogImporter
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                importer_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        itemModel:
+            targetEntity: CatalogItemmodel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                item_model_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        size:
+            targetEntity: CatalogSize
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                size_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        stampdevice:
+            targetEntity: Devices
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                StampDevice:
+                    referencedColumnName: C
+            orphanRemoval: false
+        vatgroup:
+            targetEntity: Vatgroups
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                VatGroup:
+                    referencedColumnName: C
+            orphanRemoval: false
+        unit:
+            targetEntity: CatalogItemsunits
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unit_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

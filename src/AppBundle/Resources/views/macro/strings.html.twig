@@ -1,0 +1,3 @@
+{% macro limitTo(string, size) %}
+{{ string|raw|length > size ? string|slice(0, size) ~ '...' : string  }}
+{% endmacro %}

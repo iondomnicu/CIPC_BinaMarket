@@ -1,0 +1,57 @@
+<ul>
+{% for menus in data.menu %}
+    <li>{{ menus.idMenu }}</li>
+    <li>{{ menus.denMenu }}</li>
+{% endfor %}
+</ul>
+{{ path('home',{subjectId:3}) }}
+{{ path('show_client_article', { 'articleId': infocom.C }) }}
+{{ path('show_client_article', { 'articleId': infocom.C }) }}
+
+ {% if data.count > 1 %}
+       <div class="col-md-12">
+           <div style="margin-left:200px;">
+<ul class="list-unstyled list-inline pagination">   
+     {% if data.b >= 1%}
+           <li style="display:inline-block;"><a href="../company/{{data.b}}" style="list-style: none;"><<</a></li>
+       {% endif %}
+    {% if data.count > 9 %}    
+    {% for i in 1..9 %}
+      <li style="display:inline-block;"><a href="../company/{{i}}" style="list-style: none;">{{ i }}</a></li>
+    {% endfor %}
+    <li style="display:inline-block;"><a href="../company/{{data.a}}" style="list-style: none;">  >> </a></li>
+      {% else %}
+   {% for i in range(1, data.count) %}
+      <li style="display:inline-block;"><a href="../company/{{i}}" style="list-style: none;">{{ i }}</a></li>
+    {% endfor %}
+    {% endif %}
+</ul>  
+   {% endif %} 
+       </div>
+   </div>       
+       
+       
+       
+
+   {% if data.count > 1 %}
+       <div class="col-md-12">
+           <div style="margin-left:200px;">
+<ul class="list-unstyled list-inline pagination">   
+     {% if data.b >= 1%}
+           <li style="display:inline-block;"><a href="../products/{{data.b}}" style="list-style: none;"><<</a></li>
+     {% endif %}
+    {% if data.count > 9 %}    
+    {% for i in 1..9 %}
+      <li style="display:inline-block;"><a href="../products/{{i}}" style="list-style: none;">{{ i }}</a></li>
+    {% endfor %}
+    <li style="display:inline-block;"><a href="../products/{{data.a}}" style="list-style: none;">  >> </a></li>
+      {% else %}
+   {% for i in range(1, data.count) %}
+      <li style="display:inline-block;"><a href="../products/{{i}}" style="list-style: none;">{{ i }}</a></li>
+    {% endfor %}
+    {% endif %}
+</ul>  
+   {% endif %} 
+       </div>
+   </div>                
+{% endif %}

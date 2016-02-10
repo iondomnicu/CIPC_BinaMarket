@@ -1,0 +1,39 @@
+{% extends 'B2BBlogBundle:template:base.html.twig' %}
+{% block title %}
+    {{ parent() }}
+    {% include 'B2BBlogBundle:partials:title.html.twig' %}
+{% endblock %}
+{% block content %}
+    <h2 class="text-muted">Client list</h2>
+    <hr>
+    {% if data.profiles is defined %}
+       {% for profile in data.profiles %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="{{ path('client_profile', {'companyId': profile.id}) }}" />
+                        <img src="
+                            {% if profile.image|length %}
+                            {{ profile.image }}
+                            {% else %}
+                            {{ asset('bundles/b2bblog/images/logo-placeholder.jpg') }}
+                            {% endif %}" alt="{{ profile.nm }}" class="profile-logo"/>
+                    </a>
+                </div>
+                <div class="col-sm-8 text-center">
+                    <h2 class="text-right">{{ profile.nm }}</h2>
+                    <p class="text-right">
+                        <br>
+                        <a href="{{ path('client_articles', {'companyId': profile.id}) }}" class="btn btn-default btn-sm">Articles</a>
+                        <a href="{{ path('client_profile', {'companyId': profile.id}) }}" class="btn btn-default btn-sm">Profile</a>
+                    </p>
+                </div>
+            </div>
+           {% include 'B2BBlogBundle:partials:debug.html.twig' with { 'data': profile } %}
+            <hr>
+       {% endfor %}
+    {% else %}
+    <div class="row">
+        <h4></h4>
+    </div>
+    {% endif %}
+{% endblock %}

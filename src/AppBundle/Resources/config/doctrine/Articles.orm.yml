@@ -1,0 +1,111 @@
+AppBundle\Entity\Articles:
+    type: entity
+    table: articles
+    repositoryClass: AppBundle\Entity\ArticlesRepository
+    indexes:
+        Articles_0316dde1:
+            columns:
+                - company_id
+        Articles_80c06cbb:
+            columns:
+                - last_modified_user_id
+        Articles_406ec824:
+            columns:
+                - stampdevice_id
+        Articles_ffaba1d1:
+            columns:
+                - subject_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        body:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+        created:
+            type: datetime
+            nullable: false
+        description:
+            type: string
+            nullable: false
+            length: 400
+            options:
+                fixed: false
+        tags:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        published:
+            type: boolean
+            nullable: false
+        image:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+        swdelete:
+            type: boolean
+            nullable: false
+        stampdate:
+            type: datetime
+            nullable: false
+    manyToOne:
+        subject:
+            targetEntity: OnlineArticlessubject
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                subject_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        company:
+            targetEntity: Companies
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                company_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        lastModifiedUser:
+            targetEntity: Users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                last_modified_user_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+        stampdevice:
+            targetEntity: Devices
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                stampdevice_id:
+                    referencedColumnName: C
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

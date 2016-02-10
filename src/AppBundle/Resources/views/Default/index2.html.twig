@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BinaSmartShopOnline{% endblock %}</title>
+    <!-- Bootstrap -->
+    {%  block stylesheets %}
+     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+     <link href="{{ asset('css/style.css')}}" rel="stylesheet">
+     <link href="{{ asset('css/nanoscroller.css')}}" rel="stylesheet">
+     <link href="{{ asset('css/mainstyle.css')}}" rel="stylesheet">
+     <link href="{{ asset('css/style.scss')}}" rel="stylesheet">
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    {% endblock stylesheets %}    
+     
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('js/jquery.nanoscroller.min.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/jquery-1.4.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui-1.8.2.custom.min.js') }}"></script>
+  
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    {% block externaljs %}{% endblock %}
+    <script>
+        {% block headjs %}{% endblock %}
+    </script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   <!-- <script>
+        var urls = {
+            'company': " path('profiles_list') }}",
+            'article': "path('show_client_article', {'articleId': '111'})|replace({ '111': ''}) }}"
+        };
+    </script>-->
+ 
+</head>
+<body>     {% if data.search1 is defined %}
+              {% include 'AppBundle:partials:scriptsearch.html.twig' with [{'search1': data.search1}] %}
+           {% endif %}
+    <div class="container">
+    <nav class="navbar navbar-default  hidden-lg">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ path('home') }}" class="">
+                    <img src="{{ asset('images/logo.png')}}" alt="logo" class="header-logo" />
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                     {% for Menu in data.menu %}    
+                      <li class="limenu"><a href="{{path('home',{subjectId:Menu.denMenu}) }}">{{Menu.denMenu}}</a></li>
+                    {% endfor %}
+                  <li>{% include 'AppBundle:partials:search.form.html.twig' %}</li>
+                    
+             
+       
+                </ul>
+                
+                
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+                      
+    </div>                 
+    <header class="header hidden-xs hidden-md hidden-sm">
+        <div class="container">
+             <a href="{{ path('home') }}" style="float: left;">
+                <img src="{{ asset('images/logo.png')}}" alt="logo" class="header-logo" />
+             </a>
+             
+        <div class="meniu">
+          <ul>
+              <li>{% include 'AppBundle:partials:search.form.html.twig' %}</li>
+          {% for Menu in data.menu %}    
+            <li><a href="{{path('home',{subjectId:Menu.denMenu}) }}">{{Menu.denMenu}}</a> </li>
+          {% endfor %}
+          </ul>
+        
+      </div>
+        </div>
+          
+    </header>
+    <div class="container main">
+        <div class="col-md-3 left-col hidden-xs hidden-sm">
+            <aside class="left-block">
+                <div class="square-block">
+                    <div class="inner">
+                        
+                        <h4>Categories</h4>
+                        <ul class="list-unstyled leftmenu">
+          {% for Menu in data.menu %}    
+            <li><a href="{{path('home',{subjectId:Menu.denMenu}) }}">{{Menu.denMenu}}</a></li>
+          {% endfor %}
+          </ul>
+                    </div>
+                </div>
+      
+                <div class="square-block">
+                    <div class="inner">
+                           {% if ( data.companies is defined )or ( data.items is defined )or ( data.articles is defined) %} 
+                        <h5 class="middle-header blue-text">Sortare Dupa Nume</h5>
+                        <ul class="list-unstyled leftmenu">
+                            <li><a href="{{path('sortasc',{nume:data.name}) }}">► A..Z ↑</a>
+                            <a class="sortx" href="{{path('sortdesc',{nume:data.name}) }}">► Z..A ↓</a></li>
+                        </ul> 
+                        {% endif %}
+                            {% if data.items is defined %}
+                        <h5 class="middle-header blue-text">Sortare Dupa Pret</h5>
+                         <ul class="list-unstyled leftmenu">
+                            <li><a href="{{path('ascpret')}}">Crescator ↑</a></li>
+                            <li><a href="{{path('descpret')}}">Descrescator ↓</a></li>
+                         </ul>
+                            {%endif%}
+                        
+                    </div>
+                </div>
+                <div class="square-block" id="most-popular">
+                  <div class="square-block" id="most-popular">
+                    <div class="inner">
+                        <h5 class="middle-header blue-text">Most Popular</h5>
+                           <ul class="list-unstyled">
+                            {% if data.popular is defined %}
+                            {% for popular in data.popular %}
+                               <li>
+                                 <div class="pull-right img-placeholder">
+                                <a href="{{path('info',{i:popular.C}) }}">    
+                                 {%if popular.LogoImage is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+            <img src="{{ asset('images/')}}{{popular.LogoImage}}" alt="post" /> 
+              {%endif%}  
+                                </a>
+                                </div>
+                                <a href="{{path('info',{i:popular.C}) }}">{{popular.Nm}}</a>
+                              </li>
+                            {% endfor %} 
+                            {%endif%}
+                            {% if data.popularitem is defined %}
+                            {% for popular in data.popularitem %}
+                               <li>
+                                 <div class="pull-right img-placeholder">
+                                <a href="{{path('infopage',{id:popular.C}) }}"> 
+                                      {%if popular.Picture is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+            <img src="{{ asset('images/')}}{{popular.Picture}}" class="img-responsive" alt="popular"> 
+              {%endif%} 
+                                 
+                                </a>
+                                </div>
+                                <a href="{{path('infopage',{id:popular.C}) }}">{{popular.Nm}}</a>
+                              </li>
+                            {% endfor %} 
+                            {%endif%}
+                          </ul>
+                    </div>
+                  </div>
+                </div>
+
+            </aside>
+        </div>
+ <div class="col-md-9 contents">
+     {# total items count #}
+      {% if data.companies is defined %}
+{% for infocom in data.companies %}
+   <div class="col-md-3 infocontent">
+          <div class="content_img">
+           {%if infocom.LogoImage is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+            <img src="{{ asset('images/')}}{{infocom.LogoImage}}" alt="post" /> 
+              {%endif%}    
+          </div> 
+            <ul class="list-unstyled">
+                    <li class="post-meta">
+                        <p>
+                            <span class="company-name">{{ infocom.Nm }}</span><span class="category"></span>
+                        </p>
+                        <p><span class="date">{{ infocom.date_created|date("d/m/Y G:i") }}</span></p>
+                    </li>
+                    <li>
+                        <h3 class="post-title"><a href="{{path('info',{i:infocom.C}) }}">
+                            {{ infocom.Nm }}</a>
+                        </h3>
+                    </li>
+                    <li>
+                        <p class="post-description">
+                            {{ infocom.Email }}
+                        </p>
+                    </li>
+                </ul>
+                        
+                <footer>
+                    <a href="{{path('info',{i:infocom.C}) }}">more&hellip;</a>
+                    <p class="pull-right">Views: {{ infocom.views }}</p>
+                </footer>
+           </div>
+{%endfor%}
+
+
+ </div>
+{% block pagination %}
+    {% include 'AppBundle:partials:front.pagination.html.twig' with {'data.count': data.count,'a':data.a,'b':data.b,'names':data.name,'tip':data.tip,'ts':data.ts} %}
+{% endblock %}
+
+                
+{% endif %}
+   
+
+ {% if data.articles is defined %}
+{% for infocom in data.articles %}
+   <div class="col-md-3 infocontent">
+       <div class="content_img">
+       {%if infocom.image is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+         <img src="{{ asset('images/')}}{{infocom.image}}" alt="post" />
+              {%endif%}  
+       </div>   
+                <ul class="list-unstyled">
+                    <li class="post-meta">
+                        <p>
+                            <span class="company-name">{{ infocom.title }}</span><span class="category"></span>
+                        </p>
+                        <p><span class="date">{{ infocom.created|date("d/m/Y G:i") }}</span></p>
+                    </li>
+                    <li>
+                        <h3 class="post-title"><a href="{{path('info1',{i:infocom.id}) }}">
+                            {{ infocom.title }}</a>
+                        </h3>
+                    </li>
+                    <li>
+                        <p class="post-description">
+                            {{ infocom.body|slice(0,20) }}
+                        </p>
+                    </li>
+                </ul>
+                        
+                <footer>
+                    <a href="{{path('info1',{i:infocom.id}) }}">more&hellip;</a>
+                    <p class="pull-right">Views: {{ infocom.views }}</p>
+                </footer>
+            </div>
+{%endfor%}
+
+
+ </div>
+{% block paginationss %}
+    {% include 'AppBundle:partials:front.pagination.html.twig' with {'data.count': data.count,'a':data.a,'b':data.b,'names':data.name,'tip':data.tip,'ts':data.ts} %}
+{% endblock %}
+
+                
+{% endif %}
+
+{% if data.items is defined %}
+{% for infocom in data.items %}
+   <div class="col-md-3 infocontent">
+       <div class="content_img">
+         {%if infocom.Picture is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+          <img src="{{ asset('images/')}}{{infocom.Picture}}" alt="post" />
+              {%endif%}  
+       </div>      
+                <ul class="list-unstyled">
+                    <li class="post-meta">
+                        <p>
+                            <span class="company-name">{{ infocom.Nm }}</span><span class="category"></span>
+                        </p>
+                    </li>
+                    <li>
+                        <h3 class="post-title"><a href="{{path('infopage',{id:infocom.C}) }}">
+                            {{ infocom.Nm }}</a>
+                        </h3>
+                    </li>
+                    <li>
+                        <p class="post-description">
+                            {{ infocom.SalePrice }}
+                        </p>
+                    </li>
+                </ul>
+                        
+                <footer>
+                    <a href="{{path('infopage',{id:infocom.C}) }}">more&hellip;</a>
+                    <p class="pull-right">Views: {{ infocom.views }}</p>
+                </footer>
+            </div>
+{%endfor%}
+
+
+ </div>
+{% block paginations %}
+        {% include 'AppBundle:partials:front.pagination.html.twig' with {'data.count': data.count,'a':data.a,'b':data.b,'names':data.name,'tip':data.tip,'ts':data.ts} %}
+{% endblock %}
+{%  endif %}
+
+{% if data.shearch is defined %}
+{% for infocom in data.shearch %}
+   <div class="col-md-3 infocontent">
+           {%if infocom.LogoImage is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+           <img src="{{ asset('images/')}}{{infocom.LogoImage}}" alt="post" />
+              {%endif%} 
+                    
+                <ul class="list-unstyled">
+                    <li class="post-meta">
+                        <p>
+                            <span class="company-name">{{ infocom.Nm }}</span><span class="category"></span>
+                        </p>
+                        <p><span class="date">{{ infocom.date_created|date("d/m/Y G:i") }}</span></p>
+                    </li>
+                    <li>
+                        <h3 class="post-title"><a href="{{path('info',{i:infocom.C}) }}">
+                            {{ infocom.Nm }}</a>
+                        </h3>
+                    </li>
+                    <li>
+                        <p class="post-description">
+                            {{ infocom.Email }}
+                        </p>
+                    </li>
+                </ul>
+                        
+                <footer>
+                    <a href="{{path('info',{i:infocom.C}) }}">more&hellip;</a>
+                    <p class="pull-right">Views: {{ infocom.views }}</p>
+                </footer>
+            </div>
+{%endfor%}
+{% endif %}
+
+{% if data.search is defined %}
+{% for infocom in data.search %}
+   <div class="col-md-3 infocontent">
+          {%if infocom.Picture is  empty %}
+               <img src="{{ asset('images/logo-placeholder.jpg')}}" alt="post" /> 
+               {% else %}
+       <img src="{{ asset('images/')}}{{infocom.Picture}}" alt="post" /> 
+              {%endif%}
+                  
+                <ul class="list-unstyled">
+                    <li class="post-meta">
+                        <p>
+                            <span class="company-name">{{ infocom.Nm }}</span><span class="category"></span>
+                        </p>
+                        <p><span class="date">{{ infocom.BuyPrice }}</span></p>
+                    </li>
+                    <li>
+                        <h3 class="post-title"><a href="{{path('infopage',{id:infocom.C}) }}">
+                            {{ infocom.Nm }}</a>
+                        </h3>
+                    </li>
+                    <li>
+                        <p class="post-description">
+                            {{ infocom.SalePrice }}
+                        </p>
+                    </li>
+                </ul>
+                        
+                <footer>
+                    <a href="{{path('infopage',{id:infocom.C}) }}">more&hellip;</a>
+                    <p class="pull-right">Views</p>
+                </footer>
+   </div>
+{%endfor%}
+{%  endif %}
