@@ -34,6 +34,7 @@ class SortareController extends Controller{
             $connect = $this->get('database_connection');
             $sort['result'] = $connect->fetchAll('SELECT * FROM `'.$nume.'`  ORDER By `Nm` ASC LIMIT 12');
            $data = [
+               'this'=>1,
               'tip'=>'names',
               'ts'=>'ASC',
                'a'=>1,
@@ -50,6 +51,7 @@ class SortareController extends Controller{
             $sort['result'] = $connect->fetchAll('SELECT * FROM `'.$nume.'`  ORDER By `title` ASC LIMIT 12');
             
             $data = [
+                'this'=>1,
                   'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>'ASC',
@@ -66,6 +68,7 @@ class SortareController extends Controller{
            $connect = $this->get('database_connection');
            $sort['result'] = $connect->fetchAll('SELECT * FROM `'.$nume.'`  ORDER By `Nm` ASC LIMIT 12');
            $data = [
+               'this'=>1,
                  'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>'ASC',
@@ -106,6 +109,7 @@ class SortareController extends Controller{
             $connect = $this->get('database_connection');
         $sort['result'] = $connect->fetchAll('SELECT * FROM `'.$nume.'`  ORDER By `Nm` DESC LIMIT 12');
            $data = [
+               'this'=>1,
                  'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>'DESC',
@@ -122,6 +126,7 @@ class SortareController extends Controller{
             $connect = $this->get('database_connection');
             $sort['result'] = $connect->fetchAll('SELECT * FROM `'.$nume.'`  ORDER By `title` DESC LIMIT 12');
              $data = [
+                 'this'=>1,
                    'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>'DESC',
@@ -138,6 +143,7 @@ class SortareController extends Controller{
              $connect = $this->get('database_connection');
              $sort['result'] = $connect->fetchAll('SELECT * FROM `'.$nume.'`  ORDER By `Nm` DESC LIMIT 12');
            $data = [
+               'this'=>1,
                  'search1'=>$search1['result'],
               'tip'=>'names',
               'ts'=>'DESC',
@@ -177,6 +183,7 @@ class SortareController extends Controller{
         
         
            $data = [
+               'this'=>1,
                  'search1'=>$search1['result'],
               'tip'=>'pret',
               'ts'=>'DESC',
@@ -214,6 +221,7 @@ class SortareController extends Controller{
         
         
            $data = [
+               'this'=>1,
                  'search1'=>$search1['result'],
               'tip'=>'pret',
               'ts'=>'DESC',
