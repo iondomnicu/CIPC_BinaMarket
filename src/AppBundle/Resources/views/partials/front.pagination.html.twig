@@ -5,10 +5,10 @@
      {% if data.this > 1%}
            <li style="display:inline-block;"><a class="pag" href="{{path('page',{'i':data.b,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;"><<</a></li>
        {% endif %}
-    {% if data.count > 9 %} 
+    {% if data.count > 8 %} 
     {%if data.count>data.this+5%}
     {%if data.this-4<1%}
-        {% for i in 1..9 %}
+        {% for i in 1..8 %}
           {%if data.this==i%}
     <li style="display:inline-block;"><a style="list-style: none; background-color: gray;">{{ i }}</a></li>
     {%else%}
@@ -16,7 +16,7 @@
     {%endif%}
     {% endfor %}
     {%else%}
-    {% for i in data.this-3..data.this+5 %}
+    {% for i in data.this-3..data.this+4 %}
     {%if data.this==i%}
     <li style="display:inline-block;"><a style="list-style: none; background-color: gray;">{{ i }}</a></li>
     {%else%}
@@ -25,7 +25,7 @@
       {% endfor %}
     {%endif%}
     {%else%}
-    {% for i in data.count-8..data.count %}
+    {% for i in data.count-7..data.count %}
     {%if data.this==i%}
     <li style="display:inline-block;"><a style="list-style: none; background-color: gray;">{{ i }}</a></li>
     {%else%}

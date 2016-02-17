@@ -217,12 +217,12 @@
                 </footer>
            </div>
 {%endfor%}
-
-
- </div>
 {% block pagination %}
     {% include 'AppBundle:partials:front.pagination.html.twig' with {'data.count': data.count,'a':data.a,'b':data.b,'names':data.name,'tip':data.tip,'ts':data.ts} %}
 {% endblock %}
+
+ </div>
+
 
                 
 {% endif %}
@@ -263,16 +263,16 @@
                 </footer>
             </div>
 {%endfor%}
-
-
- </div>
 {% block paginationss %}
     {% include 'AppBundle:partials:front.pagination.html.twig' with {'data.count': data.count,'a':data.a,'b':data.b,'names':data.name,'tip':data.tip,'ts':data.ts} %}
 {% endblock %}
 
+ </div>
+
+
                 
 {% endif %}
-
+<!------------------------------------cautare------------------------------->
 {% if data.items is defined %}
 {% for infocom in data.items %}
    <div class="col-md-3 infocontent">
@@ -308,11 +308,11 @@
             </div>
 {%endfor%}
 
-
- </div>
 {% block paginations %}
         {% include 'AppBundle:partials:front.pagination.html.twig' with {'data.count': data.count,'a':data.a,'b':data.b,'names':data.name,'tip':data.tip,'ts':data.ts} %}
 {% endblock %}
+ </div>
+
 {%  endif %}
 
 {% if data.shearch is defined %}
