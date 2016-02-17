@@ -322,5 +322,8 @@ aside li a.active {
 @media (min-width: 1040px) {
   .container {
     width: 1040px; } }
-
+ .ui-autocomplete {
+            max-height: 250px;
+            overflow-x: hidden;
+  } 
 /*# sourceMappingURL=style.css.map */
