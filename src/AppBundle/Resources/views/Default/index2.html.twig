@@ -115,16 +115,16 @@
           </ul>
                     </div>
                 </div>
-      
+       {% if ( data.companies is defined )or ( data.items is defined )or ( data.articles is defined) %} 
                 <div class="square-block">
                     <div class="inner">
-                           {% if ( data.companies is defined )or ( data.items is defined )or ( data.articles is defined) %} 
+                          
                         <h5 class="middle-header blue-text">Sortare Dupa Nume</h5>
                         <ul class="list-unstyled leftmenu">
                             <li><a href="{{path('sortasc',{nume:data.name}) }}">► A..Z ↑</a>
                             <a class="sortx" href="{{path('sortdesc',{nume:data.name}) }}">► Z..A ↓</a></li>
                         </ul> 
-                        {% endif %}
+                        
                             {% if data.items is defined %}
                         <h5 class="middle-header blue-text">Sortare Dupa Pret</h5>
                          <ul class="list-unstyled leftmenu">
@@ -134,7 +134,7 @@
                             {%endif%}
                         
                     </div>
-                </div>
+                </div>{% endif %}
                 <div class="square-block" id="most-popular">
                   <div class="square-block" id="most-popular">
                     <div class="inner">

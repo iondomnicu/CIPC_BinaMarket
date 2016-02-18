@@ -275,7 +275,7 @@ aside {
   }
 .company-profile {
   .content {
-    margin-left:20px !important;
+    margin-left: 336px;
     padding: 0 0 16px 0;
   }
   .company-name {
@@ -329,19 +329,7 @@ aside {
     }
   }
 }
-.continut{
-  
-    margin-left:20px !important;
-    padding: 0 0 16px 0;
-  }
-  #imgr{
-      float:right;
-      padding:10px;
-      width:205px;
-  }
-  .nume{
-      margin-top: 15px;
-  }
+
 .company-article {
   header {
     h1,h2,h3,h4,h5,h6 {
@@ -378,7 +366,9 @@ aside {
     background-color: white;
   }
 }
-
+#imgr{
+    float:right;
+}
 .post-image {
   height: 132px;
   display: block;

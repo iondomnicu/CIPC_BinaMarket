@@ -146,11 +146,13 @@ aside li a.active {
   .search-form input {
     height: 42px;
     line-height: 42px;
-    border: #e0e0e0 solid 1px; }
+    border: #e0e0e0 solid 1px;
+      border-radius: 5px !important;}
   .search-form input[type=text] {
     padding: 0 67px 0 10px;
     border-radius: 5px;
-    width: 100%; }
+    width: 100%;
+  }
   .search-form .glyphicon-search {
     height: 42px;
     line-height: 42px;
