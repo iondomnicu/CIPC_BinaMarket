@@ -223,7 +223,7 @@ aside li a.active {
 .company-profile .content {
   margin-left: 336px;
   padding: 0 0 16px 0; }
-.company-profile .company-name h1, .company-profile .company-name h2, .company-profile .company-name h3, .company-profile .company-name h4, .company-profile .company-name h5, .company-profile .company-name h6 {
+.company-profile , .company-profile .company-name h2, .company-profile .company-name h3, .company-profile .company-name h4, .company-profile .company-name h5, .company-profile .company-name h6 {
   margin-top: 0; }
 .company-profile .image-placeholder {
   border: #e0e0e0 solid 1px;
@@ -263,6 +263,9 @@ aside li a.active {
 
 .company-article header h1, .company-article header h2, .company-article header h3, .company-article header h4, .company-article header h5, .company-article header h6 {
   margin: 0; }
+.company-name h1{
+    padding:5px;
+}
 .company-article .post-image {
   max-width: 300px;
   margin: 0 0 10px 10px; }
