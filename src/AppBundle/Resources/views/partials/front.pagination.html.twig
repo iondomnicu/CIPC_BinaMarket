@@ -3,6 +3,7 @@
            <div style="text-align:center;p">
 <ul class="list-unstyled list-inline pagination">   
      {% if data.this > 1%}
+         <li style="display:inline-block;"><a style="width: 40px;font-size: 17px;"class="pag" href="{{path('page',{'i':'1','name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;"><<<</a></li>
            <li style="display:inline-block;"><a class="pag" href="{{path('page',{'i':data.b,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;"><<</a></li>
        {% endif %}
     {% if data.count > 8 %} 
@@ -42,9 +43,14 @@
     {%endif%}
     {% endfor %}
     {% endif %}
-         {%if data.this!=data.count%}
+    {%if data.this==1%}
+    <li style="display:inline-block;"><a href="{{path('page',{'i':'2','name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;">  >> </a></li>
+    <li style="display:inline-block;"><a style="width: 40px;font-size: 17px;"href="{{path('page',{'i':data.count,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;">  >>> </a></li>
+    {%elseif data.this!=data.count%}
     <li style="display:inline-block;"><a href="{{path('page',{'i':data.a,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;">  >> </a></li>
-      {%endif%}
+     <li style="display:inline-block;"><a style="width: 40px;font-size: 17px;" href="{{path('page',{'i':data.count,'name':data.name,'tip':data.tip,'ts':data.ts})}}" style="list-style: none;">  >>> </a></li>
+    {%endif%}
+
 </ul>  
 
        </div>
